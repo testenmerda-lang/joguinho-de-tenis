@@ -1,1 +1,94 @@
-kj
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rally Masters 3D</title>
+</head>
+<body>
+  <div id="app">
+    <section id="home-screen" class="screen active">
+      <div class="home-content">
+        <div class="eyebrow">TABLE TENNIS CHAMPIONSHIP</div>
+        <h1>RALLY<span>MASTERS</span></h1>
+        <p class="subtitle">O caminho até o topo começa aqui.</p>
+        <button id="play-button" class="primary-button">JOGAR <span>→</span></button>
+        <div class="home-footer">3D TABLE TENNIS EXPERIENCE</div>
+      </div>
+    </section>
+
+    <section id="country-screen" class="screen">
+      <div class="selection-header">
+        <div class="eyebrow">MODO CARREIRA</div>
+        <h2>REPRESENTE SEU PAÍS</h2>
+        <p>Escolha sua nacionalidade para começar sua jornada.</p>
+      </div>
+      <div id="country-grid" class="country-grid"></div>
+      <button id="start-career" class="primary-button" disabled>COMEÇAR CARREIRA →</button>
+      <button id="back-home" class="text-button">VOLTAR</button>
+    </section>
+
+    <section id="game-screen" class="screen game-screen">
+      <div class="hud">
+        <div class="hud-player">
+          <div class="flag" id="opponent-flag">🇳🇵</div>
+          <div>
+            <small>ADVERSÁRIO</small>
+            <strong id="opponent-name">NEPAL</strong>
+          </div>
+        </div>
+        <div class="scoreboard">
+          <div class="score-side">
+            <small>VOCÊ</small>
+            <strong id="player-score">0</strong>
+          </div>
+          <div class="score-divider">:</div>
+          <div class="score-side">
+            <small>OPONENTE</small>
+            <strong id="opponent-score">0</strong>
+          </div>
+        </div>
+        <div class="hud-player right">
+          <div>
+            <small>SUA SELEÇÃO</small>
+            <strong id="player-country">BRASIL</strong>
+          </div>
+          <div class="flag" id="player-flag">🇧🇷</div>
+        </div>
+      </div>
+
+      <div id="game-canvas"></div>
+
+      <div class="game-message" id="game-message">
+        <strong>PREPARE-SE</strong>
+        <span>Clique para sacar</span>
+      </div>
+
+      <div class="game-bottom">
+        <span id="game-hint">MOVA O MOUSE PARA CONTROLAR SUA RAQUETE</span>
+        <span id="round-label">RODADA 1</span>
+      </div>
+
+      <div id="point-overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <div class="eyebrow" id="point-eyebrow">PONTO</div>
+          <h2 id="point-title">PONTO SEU!</h2>
+          <p id="point-description">Boa jogada!</p>
+          <button id="continue-button" class="primary-button">CONTINUAR →</button>
+        </div>
+      </div>
+
+      <div id="match-overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <div class="eyebrow">FIM DE PARTIDA</div>
+          <h2 id="match-title">VITÓRIA!</h2>
+          <p id="match-description"></p>
+          <button id="next-match-button" class="primary-button">CONTINUAR →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/index.ts"></script>
+</body>
+</html>
