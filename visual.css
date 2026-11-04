@@ -1,1 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');
 
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #f5f7fa;
+  background: #080d16;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #080d16;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.screen.active {
+  display: flex;
+}
+
+#home-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 45%, #174b4a55 0%, transparent 55%),
+    linear-gradient(135deg, #080d16, #101b29 55%, #071016);
+}
+
+#home-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .13;
+  background-image:
+    linear-gradient(#ffffff12 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff12 1px, transparent 1px);
+  background-size: 45px 45px;
+  mask-image: linear-gradient(transparent, black, transparent);
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+  padding: 25px;
+}
+
+.eyebrow {
+  color: #60e3c1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 5px;
+}
+
+h1, h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+h1 {
+  font-size: clamp(65px, 12vw, 125px);
+  line-height: .95;
+  margin-top: 20px;
+  text-shadow: 0 10px 50px #0008;
+}
+
+h1 span {
+  display: block;
+  color: #60e3c1;
+}
+
+.subtitle {
+  color: #a6b5c5;
+  margin: 22px 0 35px;
+  font-size: 15px;
+}
+
+.primary-button {
+  border: 0;
+  color: #061511;
+  background: #60e3c1;
+  padding: 16px 32px;
+  min-width: 210px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  box-shadow: 0 8px 35px #60e3c133;
+  transition: .2s;
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: #8af5d9;
+  box-shadow: 0 12px 40px #60e3c155;
+}
+
+.primary-button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.primary-button span {
+  margin-left: 12px;
+}
+
+.home-footer {
+  color: #607080;
+  font-size: 9px;
+  letter-spacing: 4px;
+  margin-top: 65px;
+}
+
+#country-screen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background:
+    radial-gradient(ellipse at 50% 20%, #164b4655, transparent 55%),
+    #0a111c;
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.selection-header h2 {
+  font-size: clamp(35px, 6vw, 58px);
+  margin: 10px 0;
+}
+
+.selection-header p {
+  color: #9eacba;
+  font-size: 13px;
+}
+
+.country-grid {
+  width: min(850px, 95vw);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.country-card {
+  background: #121e2b;
+  border: 1px solid #293b49;
+  border-radius: 7px;
+  color: white;
+  padding: 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  transition: .2s;
+}
+
+.country-card:hover {
+  border-color: #60e3c1;
+  transform: translateY(-2px);
+}
+
+.country-card.selected {
+  background: #14362f;
+  border-color: #60e3c1;
+  box-shadow: 0 0 25px #60e3c122;
+}
+
+.country-card .country-flag {
+  font-size: 31px;
+}
+
+.country-card strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.country-card small {
+  color: #8798a8;
+  font-size: 10px;
+}
+
+.text-button {
+  margin-top: 15px;
+  color: #8a9aaa;
+  background: transparent;
+  border: 0;
+  letter-spacing: 2px;
+  font-size: 11px;
+}
+
+.text-button:hover {
+  color: white;
+}
+
+.game-screen {
+  background: #0a111b;
+  flex-direction: column;
+}
+
+.hud {
+  height: 82px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(12px, 5vw, 65px);
+  background: #0b1420;
+  border-bottom: 1px solid #263442;
+  z-index: 2;
+}
+
+.hud-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-player.right {
+  text-align: right;
+}
+
+.hud-player small {
+  display: block;
+  color: #8395a6;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.hud-player strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.flag {
+  font-size: 29px;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  text-align: center;
+}
+
+.score-side small {
+  display: block;
+  color: #8092a4;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.score-side strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.score-divider {
+  color: #60e3c1;
+  font-size: 23px;
+}
+
+#game-canvas {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#game-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.game-message {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 105px;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 2px 10px #000;
+}
+
+.game-message strong {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+.game-message span {
+  color: #c1d0db;
+  font-size: 11px;
+}
+
+.game-bottom {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 25px;
+  color: #7e91a2;
+  background: #0b1420;
+  border-top: 1px solid #263442;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #03070dcc;
+  backdrop-filter: blur(7px);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-card {
+  width: min(430px, 90vw);
+  padding: 42px 25px;
+  background: #111e2b;
+  border: 1px solid #345044;
+  border-radius: 9px;
+  text-align: center;
+  box-shadow: 0 20px 90px #0009;
+}
+
+.overlay-card h2 {
+  font-size: 55px;
+  margin: 12px 0;
+}
+
+.overlay-card p {
+  color: #a8b7c4;
+  font-size: 13px;
+  margin-bottom: 27px;
+}
+
+@media (max-width: 650px) {
+  .country-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .country-card {
+    padding: 12px 8px;
+  }
+
+  .country-card .country-flag {
+    font-size: 25px;
+  }
+
+  .hud {
+    height: 70px;
+    padding: 0 10px;
+  }
+
+  .hud-player {
+    gap: 5px;
+  }
+
+  .hud-player strong {
+    font-size: 14px;
+  }
+
+  .hud-player small {
+    font-size: 7px;
+  }
+
+  .flag {
+    font-size: 22px;
+  }
+
+  .scoreboard {
+    gap: 8px;
+  }
+
+  .score-side strong {
+    font-size: 27px;
+  }
+
+  .game-bottom {
+    font-size: 7px;
+    padding: 11px 9px;
+  }
+}
